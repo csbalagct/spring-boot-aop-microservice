@@ -21,11 +21,12 @@ pipeline {
             }
         }
 
-    stage('Stop Existing App') {
+stage('Stop Existing App') {
     steps {
         script {
-            // Find PID using netstat and taskkill
-            def pid = bat(script: "for /f \"tokens=5\" %%a in ('netstat -ano ^| findstr :%PORT%') do taskkill /PID %%a /F", returnStdout: true).trim()
+            bat """
+            for /f "tokens=5" %%a in ('netstat -ano ^| findstr :%PORT%') do taskkill /PID %%a /F
+            """
             echo "Stopped process on port %PORT% if it was running"
         }
     }
