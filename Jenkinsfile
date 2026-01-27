@@ -23,7 +23,7 @@ pipeline {
 
       stage('Deploy') {
          steps {
-            bat "java -jar build\\libs\\spring-boot-app.jar"
+            bat "java -jar build\\libs\\spring-boot-aop-microservice-0.0.1-SNAPSHOT.jar"
             }
         }
     }
