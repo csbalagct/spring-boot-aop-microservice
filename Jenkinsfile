@@ -21,20 +21,15 @@ pipeline {
             }
         }
 
-        stage('Stop Existing App') {
-            steps {
-                script {
-                    // Kill any process running on port 8080
-                    def pid = bat(script: "lsof -ti:${PORT}", returnStdout: true).trim()
-                    if (pid) {
-                        bat "kill -9 ${pid}"
-                        echo "Stopped running Spring Boot app on port ${PORT}"
-                    } else {
-                        echo "No app running on port ${PORT}"
-                    }
-                }
-            }
+    stage('Stop Existing App') {
+    steps {
+        script {
+            // Find PID using netstat and taskkill
+            def pid = bat(script: "for /f \"tokens=5\" %a in ('netstat -ano ^| findstr :${PORT}') do taskkill /PID %a /F", returnStdout: true).trim()
+            echo "Stopped process on port ${PORT} if it was running"
         }
+    }
+}
 
         stage('Deploy') {
             steps {
