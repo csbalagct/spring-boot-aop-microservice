@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Use Gradle wrapper if available
-                sh './gradlew clean build -x test'
+                bat './gradlew clean build -x test'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
                     // Kill any process running on port 8080
                     def pid = sh(script: "lsof -ti:${PORT}", returnStdout: true).trim()
                     if (pid) {
-                        sh "kill -9 ${pid}"
+                        bat "kill -9 ${pid}"
                         echo "Stopped running Spring Boot app on port ${PORT}"
                     } else {
                         echo "No app running on port ${PORT}"
@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "nohup java -jar ${JAR_NAME} > app.log 2>&1 &"
+                bat "nohup java -jar ${JAR_NAME} > app.log 2>&1 &"
                 echo "Spring Boot app deployed and running on port ${PORT}"
             }
         }
