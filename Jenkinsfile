@@ -23,7 +23,7 @@ pipeline {
 
       stage('Deploy') {
          steps {
-            bat "start java -jar build\\libs\\spring-boot-app.jar > app.log 2>&1"
+           bat "start java -jar %JAR_NAME% > app.log 2>&1"
             }
         }
     }
