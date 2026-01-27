@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "spring-boot-app"
-        JAR_NAME = "build/libs/${APP_NAME}.jar"
+        JAR_NAME = "build/libs/spring-boot-aop-microservice-0.0.1-SNAPSHOT.jar"
         PORT = "8080"
     }
 
