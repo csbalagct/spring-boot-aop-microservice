@@ -21,10 +21,9 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                bat "nohup java -jar ${JAR_NAME} > app.log 2>&1 &"
-                echo "Spring Boot app deployed and running on port ${PORT}"
+      stage('Deploy') {
+         steps {
+            bat "start java -jar build\\libs\\spring-boot-app.jar > app.log 2>&1"
             }
         }
     }
