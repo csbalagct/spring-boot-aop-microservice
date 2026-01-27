@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Kill any process running on port 8080
-                    def pid = sh(script: "lsof -ti:${PORT}", returnStdout: true).trim()
+                    def pid = bat(script: "lsof -ti:${PORT}", returnStdout: true).trim()
                     if (pid) {
                         bat "kill -9 ${pid}"
                         echo "Stopped running Spring Boot app on port ${PORT}"
