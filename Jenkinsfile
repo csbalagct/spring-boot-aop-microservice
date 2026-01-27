@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/csbalagct/spring-boot-aop-microservice.git'
+                git branch: 'main', url: 'https://github.com/csbalagct/spring-boot-aop-microservice.git'
             }
         }
 
