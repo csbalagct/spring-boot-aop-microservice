@@ -21,17 +21,6 @@ pipeline {
             }
         }
 
-stage('Stop Existing App') {
-    steps {
-        script {
-            bat """
-            for /f "tokens=5" %%a in ('netstat -ano ^| findstr :%PORT%') do taskkill /PID %%a /F
-            """
-            echo "Stopped process on port %PORT% if it was running"
-        }
-    }
-}
-
         stage('Deploy') {
             steps {
                 bat "nohup java -jar ${JAR_NAME} > app.log 2>&1 &"
