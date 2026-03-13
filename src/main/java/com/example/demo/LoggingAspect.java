@@ -16,6 +16,9 @@ public class LoggingAspect {
 
 	//Test1111111111111112222222222222255555555555555
 	
+	
+	
+	//234
 	/*
 	 * @Before("execution(* com.example.demo.service.*.*(..))") // Pointcut
 	 * expression public void logBefore(JoinPoint joinPoint) {
