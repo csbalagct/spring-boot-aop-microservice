@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
-	
+	//Test
 	
 	/*
 	 * @Before("execution(* com.example.demo.service.*.*(..))") // Pointcut
